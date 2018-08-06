@@ -1,0 +1,1 @@
+﻿This app uses the PrintDocument class and overrides the PrintPage method. Everything has to happen within this method which is why you see so many filters.
