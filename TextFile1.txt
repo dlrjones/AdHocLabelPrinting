@@ -1,0 +1,35 @@
+﻿using System;
+using System.Windows.Forms;
+namespace WindowsFormsApplication1
+{
+    public partial class Form1 : Form
+    {
+        int cLeft = 1;
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddNewTextBox();
+        }
+
+		private void button1_Click(object sender, EventArgs e)
+{
+    System.Windows.Forms.TextBox textBox1=AddNewTextBox();
+    //text is now available via
+    textBox1.Text;
+}
+
+        public System.Windows.Forms.TextBox AddNewTextBox()
+        {
+            System.Windows.Forms.TextBox txt = new System.Windows.Forms.TextBox();
+            this.Controls.Add(txt);
+            txt.Top = cLeft * 25;
+            txt.Left = 100;
+            txt.Text = "TextBox " + this.cLeft.ToString();
+            cLeft = cLeft + 1;
+            return txt;
+        }
+    }
+}

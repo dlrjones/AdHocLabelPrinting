@@ -2,20 +2,18 @@
 using System.Configuration;
 using System.IO;
 
-namespace ZebraTest1
+namespace AdHocLabelPrinting
 {
     class AES
     {
         private FileStream input;
         private FileStream output;
-        protected static string AESPath = ConfigurationManager.AppSettings["path"];
+        protected static string AESPath = AppDomain.CurrentDomain.BaseDirectory;
         protected static string connStr = ConfigurationManager.ConnectionStrings["amc_userConnectionString"].ConnectionString;
 
         public bool  GetConnectionString(ref string mssg)
         {
             return GetResources(ref mssg);
-
-            //providerName="System.Data.SqlClient" />
         }
 
         private bool GetResources(ref string mssg)
@@ -33,7 +31,7 @@ namespace ZebraTest1
 
                 try
                 {
-                    SharpAESCrypt.SharpAESCrypt.Decrypt("disposable", input, output);
+                    SharpAESCrypt.SharpAESCrypt.Decrypt("SKi#ObOIzgF*Gh2SR1YO", input, output);
                     input.Close();
                     output.Close();
 
@@ -82,11 +80,9 @@ namespace ZebraTest1
                 if (input != null)
                     input.Close();
                // logFile.LogEntry("CheckInputFile" + Environment.NewLine + ex.Message, compatibilityCode);
-                goodToGo = false;s
+                goodToGo = false;
             }
             return goodToGo;
         }
-
-
     }
 }
