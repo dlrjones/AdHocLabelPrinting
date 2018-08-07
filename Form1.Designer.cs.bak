@@ -92,14 +92,12 @@
             // rbItems
             // 
             this.rbItems.AutoSize = true;
-			this.rbItems.Checked = false;
             this.rbItems.Location = new System.Drawing.Point(11, 12);
             this.rbItems.Name = "rbItems";
             this.rbItems.Size = new System.Drawing.Size(117, 17);
             this.rbItems.TabIndex = 3;
             this.rbItems.Text = "HMC Item Numbers";
             this.rbItems.UseVisualStyleBackColor = true;
-			this.rbItems.Visible = true;
             // 
             // rbMfg
             // 

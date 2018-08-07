@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
@@ -13,7 +12,7 @@ namespace AdHocLabelPrinting
     public partial class Form1 : Form
     {
         #region Class Variables
-        protected static string amcConnStr = "";
+        protected static string amcConnStr = ConfigurationManager.ConnectionStrings["amc_userConnectionString"].ConnectionString;
         protected SqlConnection amcConn = new SqlConnection(amcConnStr);
         private ArrayList itemList = new ArrayList();
         private ArrayList itemOrder = new ArrayList(); //when parsing a list of MFG #'s, this collects the Item #'s in the same order for accessing the Hashtables
