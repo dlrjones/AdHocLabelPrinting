@@ -1782,7 +1782,7 @@ namespace AdHocLabelPrinting
                 "Enter the ITEM number or the MFG number into the list on the left " + Environment.NewLine +
                 "and indicate the number of copies you want printed in the QTY column." + Environment.NewLine +
                 "The QTY defaults to 1 if you leave it blank." + Environment.NewLine + 
-                "Click GO. The deatils of the first item in the list appear in the text" + Environment.NewLine +
+                "Click GO. The details of the first item in the list appear in the text" + Environment.NewLine +
                 "boxes on the top right half of the form." + Environment.NewLine +
                 "To Print click the ALL button to print all of the items in your list or" + Environment.NewLine +
                 "click CURRENT to print only the item whose details are being displayed." + Environment.NewLine +
