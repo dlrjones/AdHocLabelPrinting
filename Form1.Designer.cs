@@ -59,7 +59,8 @@
             // 
             // btnGo
             // 
-            this.btnGo.BackColor = System.Drawing.SystemColors.Control;
+            this.btnGo.BackColor = System.Drawing.Color.LightGreen;
+            this.btnGo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGo.Location = new System.Drawing.Point(717, 15);
             this.btnGo.Margin = new System.Windows.Forms.Padding(4);
             this.btnGo.Name = "btnGo";
@@ -71,6 +72,8 @@
             // 
             // btnDone
             // 
+            this.btnDone.BackColor = System.Drawing.Color.MistyRose;
+            this.btnDone.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDone.Location = new System.Drawing.Point(840, 57);
             this.btnDone.Margin = new System.Windows.Forms.Padding(4);
             this.btnDone.Name = "btnDone";
@@ -78,7 +81,7 @@
             this.btnDone.TabIndex = 10;
             this.btnDone.TabStop = false;
             this.btnDone.Text = "QUIT";
-            this.btnDone.UseVisualStyleBackColor = true;
+            this.btnDone.UseVisualStyleBackColor = false;
             this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
             // 
             // tbItemInput
@@ -94,10 +97,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 13);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(184, 17);
+            this.label1.Size = new System.Drawing.Size(209, 17);
             this.label1.TabIndex = 5;
             this.label1.Text = "Enter One Number Per Line";
             // 
@@ -144,7 +148,7 @@
             // 
             // btnNext
             // 
-            this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNext.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnNext.Location = new System.Drawing.Point(243, 140);
             this.btnNext.Margin = new System.Windows.Forms.Padding(4);
@@ -158,6 +162,7 @@
             // 
             // btnPrev
             // 
+            this.btnPrev.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrev.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnPrev.Location = new System.Drawing.Point(21, 140);
             this.btnPrev.Margin = new System.Windows.Forms.Padding(4);
@@ -171,6 +176,8 @@
             // 
             // btnClear
             // 
+            this.btnClear.BackColor = System.Drawing.Color.LemonChiffon;
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.Location = new System.Drawing.Point(840, 15);
             this.btnClear.Margin = new System.Windows.Forms.Padding(4);
             this.btnClear.Name = "btnClear";
@@ -178,7 +185,7 @@
             this.btnClear.TabIndex = 7;
             this.btnClear.TabStop = false;
             this.btnClear.Text = "CLEAR";
-            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // pbBarCode
@@ -204,7 +211,7 @@
             // 
             // btnPrintAll
             // 
-            this.btnPrintAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrintAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrintAll.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnPrintAll.Location = new System.Drawing.Point(13, 31);
             this.btnPrintAll.Margin = new System.Windows.Forms.Padding(4);
@@ -239,30 +246,33 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(257, 37);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(257, 33);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 17);
+            this.label3.Size = new System.Drawing.Size(90, 17);
             this.label3.TabIndex = 16;
             this.label3.Text = "HMC Item #";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(257, 69);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(291, 64);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 17);
+            this.label4.Size = new System.Drawing.Size(55, 17);
             this.label4.TabIndex = 17;
             this.label4.Text = "MFG #";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(257, 101);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(257, 96);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 17);
+            this.label5.Size = new System.Drawing.Size(90, 17);
             this.label5.TabIndex = 18;
             this.label5.Text = "Description";
             // 
@@ -288,7 +298,7 @@
             // 
             // btnPrintCurrent
             // 
-            this.btnPrintCurrent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrintCurrent.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrintCurrent.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnPrintCurrent.Location = new System.Drawing.Point(136, 31);
             this.btnPrintCurrent.Margin = new System.Windows.Forms.Padding(4);
@@ -319,7 +329,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 309);
+            this.ClientSize = new System.Drawing.Size(984, 307);
             this.Controls.Add(this.tbItemInput);
             this.Controls.Add(this.gbPrint);
             this.Controls.Add(this.tbQty);

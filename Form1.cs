@@ -6,7 +6,9 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using Connection;
+using System.IO;
+using LogDefault;
+using KeyMaster;
 using BarcodeLib;
 
 namespace AdHocLabelPrinting
@@ -17,10 +19,12 @@ namespace AdHocLabelPrinting
 
         protected static string amcConnStr =
             ConfigurationManager.ConnectionStrings["amc_userConnectionString"].ConnectionString;
-
         private string basePath = ConfigurationManager.AppSettings["basePath"];
         private string fileName = ConfigurationManager.AppSettings["fileName"];
+        private string logFile = ConfigurationManager.AppSettings["logFile"];
+        private string logFilePath = ConfigurationManager.AppSettings["logFilePath"];
         protected SqlConnection amcConn;
+        private LogManager lm = LogManager.GetInstance();
         private ArrayList itemList = new ArrayList();
         private ArrayList itemOrder = new ArrayList();
             //when parsing a list of MFG #'s, this collects the Item #'s in the same order for accessing the Hashtables
@@ -66,14 +70,18 @@ namespace AdHocLabelPrinting
             string mssg = "";
             InitializeComponent();
             basePath = basePath.Equals("base") ? AppDomain.CurrentDomain.BaseDirectory : basePath;
-            AES connect = new AES();
+            lm.LogFilePath = logFilePath;
+            lm.LogFile = logFile;
+            amcConnStr += GetKey();
+           // AES connect = new AES();
 
-            connect.AesPath = basePath;
-            connect.ConnStr = amcConnStr;
-            connect.FileName = fileName;
-            if (connect.GetConnectionString(ref mssg))
+            //connect.AesPath = basePath;
+            //connect.ConnStr = amcConnStr;
+            //connect.FileName = fileName;
+            //if (connect.GetConnectionString(ref mssg))
+            if(amcConnStr.Length > 0)
             {
-                amcConnStr = connect.ConnStr;
+               // amcConnStr = connect.ConnStr;
                 amcConn = new SqlConnection(amcConnStr);
                 //initialize the start position drop list
                 for (int x = 1; x < 31; x++)
@@ -86,6 +94,7 @@ namespace AdHocLabelPrinting
                 MessageBox.Show(mssg + Environment.NewLine + "There's no database connection" + Environment.NewLine +
                                 "Contact HEMM Help", "Problem Connecting...");
                 this.Text += "      NO DATABASE CONNECTION";
+                lm.Write("Form1() - There's no database connection.");
             }
         }
 
@@ -100,6 +109,11 @@ namespace AdHocLabelPrinting
                 if (!itemList.Contains(item))
                     itemList.Add(item.Trim());
             }
+        }
+        private string GetKey()
+        {
+            string[] key = File.ReadAllLines(basePath + fileName);
+            return StringCipher.Decrypt(key[0], "sv_pmm_jobs");
         }
 
         //Exit point for the app
@@ -207,16 +221,17 @@ namespace AdHocLabelPrinting
             bool goodToGo = false;
             string sql = "";
             string rtnValu = "";
+            string testItem = itemList[indx].ToString().Trim();
 
             Match match = Regex.Match(itemList[indx].ToString().Trim(), @"[-a-zA-Z.#()$]+");
             if(match.Length > 0)
             {
-                sql = "SELECT ITEM_NO, DESCR FROM ITEM WHERE CTLG_NO = '" + itemList[indx].ToString().Trim() + "'";
+                sql = "SELECT ITEM_NO, DESCR FROM ITEM WHERE CTLG_NO = '" + testItem + "'";
                 isItem = false;
             }
             else
             {
-                sql = "SELECT CTLG_NO, DESCR FROM ITEM WHERE ITEM_NO = '" + itemList[indx].ToString().Trim() + "'";
+                sql = "SELECT CTLG_NO, DESCR FROM ITEM WHERE ITEM_NO = '" + testItem + "'";
                 isItem = true;
             }
             try
@@ -233,6 +248,7 @@ namespace AdHocLabelPrinting
                 }
                 catch (Exception ex)
                 {
+                    lm.Write("NumberTest - Item: " + testItem + Environment.NewLine + ex.Message);
                 }
                 amcConn.Close();
                 if ((!goodToGo) && isItem)
@@ -244,6 +260,7 @@ namespace AdHocLabelPrinting
             }
             catch (Exception ex)
             {
+                lm.Write("NumberTest (outer try block) - Item: " + testItem + Environment.NewLine + ex.Message);
             }
             return goodToGo;
         }
@@ -265,6 +282,7 @@ namespace AdHocLabelPrinting
             }
             catch (Exception ex)
             {
+                lm.Write("RecheckForMfg - Item: " + item + Environment.NewLine + ex.Message);
             }
             amcConn.Close();
             return goodToGo;
@@ -324,6 +342,7 @@ namespace AdHocLabelPrinting
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "DisplayResults Error");
+                    lm.Write("DisplayResults - " + ex.Message);
                 }
             }
             else
@@ -348,6 +367,7 @@ namespace AdHocLabelPrinting
                     }
                     else
                         ClearForm();
+                    lm.Write("DisplayResults - Check Input:  " + ex.Message);
                 }
             }
             currentItemListIndex++;
@@ -503,6 +523,7 @@ namespace AdHocLabelPrinting
                 }
                 catch (Exception ex)
                 {
+                    lm.Write("BuildSQLQuery - " + ex.Message);
                 }
             }
         }
@@ -527,6 +548,7 @@ namespace AdHocLabelPrinting
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Problem");
+                lm.Write("ValidInput:  " + ex.Message);
                 goodToGo = false;
             }
             amcConn.Close();
@@ -893,6 +915,7 @@ namespace AdHocLabelPrinting
                 MessageBox.Show(
                     ex.Message + Environment.NewLine + "Take a screenshot of the form and send it to PMMHelp",
                     "Unrecognized Error");
+                lm.Write("PrintPage Unrecognized Error - " + ex.Message);
             }
         }
 
@@ -943,6 +966,7 @@ namespace AdHocLabelPrinting
                 catch (Exception ex)
                 {
                     MessageBox.Show("An error occured while printing", ex.ToString());
+                    lm.Write("btnPrint_Click  Printing Error - " + ex.Message);
                 }
             }
         }
