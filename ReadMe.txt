@@ -1,4 +1,5 @@
 ﻿Version 3
+Replaced the encryption scheme with KeyMaster.dll and added the Log Manager (LogDefault.dll)
 
 This app uses the PrintDocument class and overrides the PrintPage method. Everything has to happen within this method which is why you see so many filters.
 
