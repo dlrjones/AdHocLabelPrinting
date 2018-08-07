@@ -1785,7 +1785,11 @@ namespace AdHocLabelPrinting
                 "Click GO. The deatils of the first item in the list appear in the text" + Environment.NewLine +
                 "boxes on the top right half of the form." + Environment.NewLine +
                 "To Print click the ALL button to print all of the items in your list or" + Environment.NewLine +
-                "click CURRENT to print only the item whose details are being displayed.");
+                "click CURRENT to print only the item whose details are being displayed." + Environment.NewLine +
+                "The drop list START POSITION is intended for those cases where you need" + Environment.NewLine +
+                "to manually insert a sheet of labels into a printer. It is optimized for" + Environment.NewLine +
+                "a specific type of sheet with 10 rows of 3 columns each. Leave it on position " +
+                "1 if this doesn't work for you.");
         }
     }
 }
