@@ -887,12 +887,12 @@ namespace AdHocLabelPrinting
             ResetForm();
         }
 
-        //currentItemNo having a value in it means the user clicked the PrintAllowed button
+        //currentItemNo having a value in it means the user clicked the Print button
         //The outer Print routine is stepping through each of the items in tbItemInput.
         // When it matches the one that is passed in here then that single label is printed.
         // When currentItemNo is empty then the return value is TRUE and all labels get printed.
         // Since the user may want several of the same labels printed (qtyToPrint > 0) I set qtyPrinted
-        // to 0 so that same unwanted itemNo's doesn't get passed in here the qtyToPrint number of times.
+        // to 0 so that some unwanted itemNo's don't get passed in here the qtyToPrint number of times.
         private bool PrintAllowed(string itemNo)
         {
             bool goodToGo = false;
